@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Farm · 404 — THEME'STERM</title>
+<meta name="robots" content="noindex">
+<link rel="preload" href="../src/fonts/grandstander-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../src/fonts/inter-400-500.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+  // Cache la carte jusqu'à ce que GSAP prenne le relais (jamais en mouvement réduit ; filet à 3 s)
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('pre');
+    setTimeout(() => document.documentElement.classList.remove('pre'), 3000);
+  }
+</script>
+</head>
+<body data-page="farm">
+<div id="root"></div>
+<script type="module" src="../src/notfound/main.jsx"></script>
+</body>
+</html>

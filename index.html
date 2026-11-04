@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>THEME'STERM — Command your choices · Quentin.C</title>
+<meta name="description" content="THEME'STERM by Quentin.C: open any terminal and pick your world, a classic shell or live ASCII backdrops with a bouncy hello.">
+<link rel="preload" href="./src/fonts/grandstander-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./src/fonts/inter-400-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./1-poster.jpg" as="image" fetchpriority="high">
+<script>
+  // Cache les éléments animés jusqu'à ce que la timeline GSAP prenne le relais
+  // (jamais en mouvement réduit ; filet de sécurité à 3 s).
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('pre');
+    setTimeout(() => document.documentElement.classList.remove('pre'), 3000);
+  }
+</script>
+</head>
+<body>
+<div id="root"></div>
+<script type="module" src="./src/main.jsx"></script>
+</body>
+</html>

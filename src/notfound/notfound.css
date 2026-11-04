@@ -1,0 +1,111 @@
+@import '../fonts.css';
+
+:root {
+  --display: 'Grandstander', 'Arial Rounded MT Bold', system-ui, sans-serif;
+  --text: 'Inter', system-ui, -apple-system, sans-serif;
+  --cream: #f6eed6;
+  --cream-line: #e3d6ad;
+  --four: #fffaee;
+  --ink: #3f5f2b;
+  --muted: #8a7d5c;
+  --green: #5b875c;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  /* le ciel du hero en haut, la prairie du footer en bas */
+  background: linear-gradient(to bottom, #9cc3e6 0%, #c7dcea 46%, #d7e3b4 78%, #a9c46e 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+html.pre .nf-card > * { opacity: 0; }
+
+.nf {
+  min-height: 100vh; min-height: 100dvh;
+  display: grid; place-items: center;
+  padding: clamp(16px, 3.4vw, 48px);
+}
+.nf-card {
+  width: min(1180px, 100%);
+  min-height: min(760px, calc(100dvh - 2 * clamp(16px, 3.4vw, 48px)));
+  display: flex; flex-direction: column;
+  background: var(--cream);
+  border: clamp(4px, .5vw, 7px) solid var(--cream-line);
+  border-radius: clamp(26px, 3.2vw, 44px);
+  box-shadow: 0 30px 80px -30px rgba(40, 70, 40, .45);
+  padding: clamp(18px, 2.6vw, 34px) clamp(18px, 4.6vw, 64px) clamp(28px, 4vw, 56px);
+  overflow: hidden;
+}
+
+/* ---------- haut de carte ---------- */
+.nf-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.nf-logo {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--display); font-weight: 900; font-size: clamp(20px, 2vw, 27px); color: var(--ink);
+}
+.nf-logo svg { width: 1em; height: 1em; fill: var(--green); }
+.nf-nav { display: flex; gap: clamp(14px, 2.6vw, 36px); font-weight: 500; font-size: clamp(14px, 1.15vw, 16px); }
+.nf-nav a { color: var(--muted); position: relative; transition: color .3s; }
+.nf-nav a:hover, .nf-nav a[aria-current] { color: var(--ink); }
+.nf-nav a[aria-current]::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -6px;
+  height: 3px; border-radius: 3px; background: #ffe066;
+}
+
+/* ---------- 4 Termi 4 ---------- */
+.nf-main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding-top: clamp(10px, 2vw, 24px); }
+.nf-stage { position: relative; display: flex; align-items: center; justify-content: center; }
+.nf-four {
+  font-family: var(--display); font-weight: 900; line-height: .8;
+  font-size: clamp(150px, 27vw, 380px);
+  color: var(--four);
+  text-shadow: 0 2px 0 rgba(227, 214, 173, .7);
+  user-select: none;
+}
+.nf-four.left { margin-right: clamp(-70px, -4.6vw, -26px); }
+.nf-four.right { margin-left: clamp(-70px, -4.6vw, -26px); }
+.nf-termi {
+  position: relative; z-index: 1;
+  width: clamp(130px, 19vw, 260px); padding: 0; border: 0; background: none;
+  cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.nf-termi:focus-visible { outline: 3px solid #ffe066; outline-offset: 6px; border-radius: 30px; }
+.termi { display: block; width: 100%; height: auto; overflow: visible; }
+
+.nf-code {
+  margin: clamp(10px, 1.6vw, 22px) 0 0;
+  font-size: 13px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+}
+.nf-title {
+  margin: 10px 0 0; max-width: 20ch;
+  font-family: var(--display); font-weight: 900; line-height: 1.02;
+  font-size: clamp(30px, 3.6vw, 50px); color: var(--ink);
+}
+.nf-text { margin: 12px 0 0; max-width: 42ch; font-size: clamp(15px, 1.25vw, 18px); line-height: 1.5; color: var(--muted); }
+
+.nf-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: clamp(20px, 2.4vw, 32px); }
+.nf-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 48px; padding: 0 24px; border-radius: 999px;
+  font-weight: 500; font-size: 16px;
+  border: 2px solid var(--cream-line); color: var(--ink); background: #fffaf0;
+  transition: transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s;
+}
+.nf-btn.primary { background: var(--green); border-color: var(--green); color: #fff; box-shadow: 0 10px 24px -12px rgba(63, 95, 43, .8); }
+.nf-btn:hover { transform: translateY(-2px); }
+
+/* ---------- téléphones ---------- */
+@media (max-width: 640px) {
+  .nf-top { flex-direction: column; gap: 14px; }
+  .nf-nav { flex-wrap: wrap; justify-content: center; gap: 8px 16px; }
+  .nf-card { min-height: calc(100dvh - 32px); }
+  .nf-btn { width: 100%; }
+  .nf-actions { width: 100%; max-width: 320px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nf-btn, .nf-nav a { transition: none; }
+}
